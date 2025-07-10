@@ -38,8 +38,8 @@ export default function SignInForm() {
   useEffect(() => {
     if (state.success) {
       if (state.isVerified) {
-        router.replace("/user");
-        // alert("Login successful. Welcome back!");
+        router.replace("/profile/bio-data");
+        alert("Login successful. Welcome back!");
         //   } else {
         //     router.push("/verify_email?email=" + encodeURIComponent(email));
       }
@@ -175,7 +175,7 @@ export default function SignInForm() {
                     </span>
                   </div>
                   <Link
-                    href="/reset-password"
+                    href="/forgotpassword"
                     className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
                   >
                     Forgot password?
