@@ -4,10 +4,10 @@ import React from "react";
 export default function GridShape() {
   return (
     <>
-      <div className="absolute -z-1 w-full max-w-[1000px] xl:max-w-[1000px]">
+      <div className="absolute -z-1 w-full max-w-[1080px] xl:max-w-[1080px]">
         <Image
-          width={700}
-          height={300}
+          width={600}
+          height={600}
           src="/images/shape/pattern.svg"
           alt="grid"
         />

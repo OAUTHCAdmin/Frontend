@@ -103,7 +103,7 @@ export default function ForgotPasswordForm() {
   }
 
   return (
-    <div className="flex flex-col flex-1 lg:w-1/2 w-full h-full min-h-screen">
+    <div className="flex flex-col flex-1 lg:w-1/2 w-full h-screen max-h-screen overflow-hidden relative">
       {/* Back to dashboard link - positioned absolutely */}
       <div className="absolute top-8 left-8 z-10">
         <Link
@@ -116,10 +116,10 @@ export default function ForgotPasswordForm() {
       </div>
 
       {/* Centered Form Container */}
-      <div className="flex flex-col items-center justify-center flex-1 w-full max-w-md mx-auto">
+      <div className="flex flex-col items-center justify-center flex-1 w-full max-w-md mx-auto overflow-y-auto">
         <div className="w-full max-w-md space-y-6">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Forgot Your Password?</h2>
+            <h2 className="font-bold text-gray-900 text-title-sm dark:text-white/90 sm:text-title-md mb-2">Forgot Your Password?</h2>
             <p className="text-gray-600">
               Enter the email address linked to your account, and we&#39;ll send you a link to reset your password.
             </p>

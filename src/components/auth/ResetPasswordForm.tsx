@@ -90,7 +90,7 @@ export default function ResetPasswordForm() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Password Reset Successful!</h2>
+            <h2 className="font-bold text-gray-900 text-title-sm dark:text-white/90 sm:text-title-md">Password Reset Successful!</h2>
             <p className="text-gray-600">
               Your password has been successfully reset. You will be redirected to the login page in a few seconds.
             </p>
@@ -125,7 +125,7 @@ export default function ResetPasswordForm() {
       <div className="flex flex-col items-center justify-center flex-1 w-full max-w-md mx-auto">
         <div className="w-full max-w-md space-y-6">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Reset Your Password?</h2>
+            <h2 className="font-bold text-gray-900 text-title-sm dark:text-white/90 sm:text-title-md mb-2">Reset Your Password?</h2>
             <p className="text-gray-600">Reset your password.</p>
           </div>
 

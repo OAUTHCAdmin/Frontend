@@ -3,26 +3,9 @@ import { ChevronDownIcon } from '@/icons';
 import Button from '@/components/ui/button/Button';
 import Label from '@/components/form/Label';
 import Input from '@/components/form/input/InputField';
+import Checkbox from '@/components/form/input/Checkbox';
+import { FormData } from '@/logic/interface/biodata';
 
-interface FormData {
-  surname: string;
-  otherNames: string;
-  sex: string;
-  placeOfBirth: string;
-  dateOfBirth: string;
-  decorations: string;
-  currentAppointment: string;
-  hometownAddress: string;
-  presentResidentialAddress: string;
-  languages: string[];
-  languageFluency: {
-    [key: string]: {
-      spoken: 'Beginner' | 'Intermediate' | 'Advanced';
-      written: 'Beginner' | 'Intermediate' | 'Advanced';
-      examQualified: 'Beginner' | 'Intermediate' | 'Advanced';
-    };
-  };
-}
 
 const StaffRecordsForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -210,9 +193,9 @@ const StaffRecordsForm: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <Label className="block text-sm font-medium text-gray-700 mb-2">
             Place of Birth
-          </label>
+          </Label>
           <CustomDropdown
             placeholder="Select Place of Birth"
             value={formData.placeOfBirth}
@@ -223,11 +206,11 @@ const StaffRecordsForm: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <Label className="block text-sm font-medium text-gray-700 mb-2">
             Date of Birth
-          </label>
+          </Label>
           <div className="relative">
-            <input
+            <Input
               type="Calendar"
               value={formData.dateOfBirth}
               onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
@@ -239,11 +222,10 @@ const StaffRecordsForm: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <Label className="block text-sm font-medium text-gray-700 mb-2">
             Decorations
-          </label>
-          <input
-            type="text"
+          </Label>
+          <Input
             value={formData.decorations}
             onChange={(e) => handleInputChange('decorations', e.target.value)}
             placeholder="Decorations"
@@ -255,7 +237,6 @@ const StaffRecordsForm: React.FC = () => {
             Current Appointment
           </Label>
           <Input
-            type="text"
             value={formData.currentAppointment}
             onChange={(e) => handleInputChange('currentAppointment', e.target.value)}
             placeholder="Current Appointment"
@@ -265,9 +246,9 @@ const StaffRecordsForm: React.FC = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <Label className="block text-sm font-medium text-gray-700 mb-2">
           Hometown Address
-        </label>
+        </Label>
         <Input 
         //   type="text"
           value={formData.hometownAddress}
@@ -281,8 +262,7 @@ const StaffRecordsForm: React.FC = () => {
         <Label className="block text-sm font-medium text-gray-700 mb-2">
           Present Residential Address
         </Label>
-        <input
-          type="text"
+        <Input
           value={formData.presentResidentialAddress}
           onChange={(e) => handleInputChange('presentResidentialAddress', e.target.value)}
           placeholder="Residential home address"
@@ -295,26 +275,26 @@ const StaffRecordsForm: React.FC = () => {
           Languages
         </Label>
         <div className="relative">
-          <button
-            type="button"
+          <Button
+            // type="button"
             onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg text-left bg-white hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 flex items-center justify-between"
           >
             <span className="text-gray-400">Select Multiple Languages</span>
             <ChevronDownIcon className="w-4 h-4 text-gray-400" />
-          </button>
+          </Button>
           {showLanguageDropdown && (
             <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
               {languageOptions.map((language) => (
-                <label key={language} className="flex items-center px-4 py-2 hover:bg-gray-50 cursor-pointer">
-                  <input
-                    type="checkbox"
+                <Label key={language} className="flex items-center px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                  <Checkbox
+                    // type="checkbox"
                     checked={formData.languages.includes(language)}
                     onChange={() => handleLanguageSelection(language)}
                     className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 mr-3"
                   />
                   {language}
-                </label>
+                </Label>
               ))}
             </div>
           )}
@@ -330,22 +310,22 @@ const StaffRecordsForm: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {['spoken', 'written', 'examQualified'].map((type) => (
                   <div key={type}>
-                    <label className="block text-sm font-medium text-gray-700 mb-2 capitalize">
+                    <Label className="block text-sm font-medium text-gray-700 mb-2 capitalize">
                       {type === 'examQualified' ? 'Exam. Qualified' : type}
-                    </label>
+                    </Label>
                     <div className="space-y-2">
                       {['Beginner', 'Intermediate', 'Advanced'].map((level) => (
-                        <label key={level} className="flex items-center">
-                          <input
-                            type="radio"
-                            name={`${language}-${type}`}
-                            value={level}
+                        <Label key={level} className="flex items-center">
+                          <Checkbox
+                            // type="radio"
+                            // name={`${language}-${type}`}
+                            // value={level}
                             checked={formData.languageFluency[language]?.[type as keyof typeof formData.languageFluency[string]] === level}
                             onChange={() => handleFluencyChange(language, type as 'spoken' | 'written' | 'examQualified', level as 'Beginner' | 'Intermediate' | 'Advanced')}
                             className="w-4 h-4 text-blue-600 focus:ring-blue-500 mr-2"
                           />
                           <span className="text-sm text-gray-700">{level}</span>
-                        </label>
+                        </Label>
                       ))}
                     </div>
                   </div>
